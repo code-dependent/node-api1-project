@@ -106,7 +106,7 @@ server.put("/api/users/:id", (req, res) => {
   const user = req.body;
   const id = req.params.id;
   isUser = users.find((user) => user.id === id);
-  if (isUser) {
+  if (isUser !== null) {
     user.id = id;
     try {
       users = users.filter((user) => user.id !== Number(id));
@@ -127,3 +127,7 @@ server.put("/api/users/:id", (req, res) => {
 const port = 8000;
 
 server.listen(port, () => console.log(`Day 1 Module API on port ${port}`));
+
+const a = { type: "cake" };
+a.type = "soup";
+console.log(a["type"]);
